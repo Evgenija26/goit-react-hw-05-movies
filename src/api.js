@@ -16,14 +16,12 @@ export const fetchTrending = async () => {
 //     return { id, tags, webformatURL, largeImageURL };
 //   });
 
-export const normalizedMovies = movies => {
-  movies.map(({ id }) => {
-    return { id };
-  });
-  //   const { data } = await axios.get(
-  //     `search/movie?api_key=${API_KEY}&page=1&include_adult=false`
-  // //   );
-  //   return data;
+export const fetchSearchMovies = async () => {
+  const { data } = await axios.get(
+    `search/movie?api_key=${API_KEY}&page=1&include_adult=false`
+  );
+  console.log(data);
+  return data;
 };
 
 export const fetchMovieDetails = async () => {

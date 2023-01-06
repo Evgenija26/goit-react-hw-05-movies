@@ -1,7 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
-import * as API from 'api';
+import { fetchTrending } from 'api';
 import { AppBar } from 'components/AppBar';
 import { Loader } from 'components/Loader';
 
@@ -17,9 +17,13 @@ export const Home = () => {
       try {
         setIsLoading(true);
         // const data = await API.getImages(searchName, currentPage);
-        const data = await API.fetchTrending(trending);
-        setTrending(data.results);
-      } catch (error) {
+        const data = await fetchTrending(trending);
+
+        if (data.hits.lenght === 0) {
+          toast.info('Nothing found');
+        }
+        setTrending(prevTrending => [...prevTrending, ...trending]);
+      } catch {
         toast.error('something went wrong');
       } finally {
         setIsLoading(false);
@@ -29,8 +33,10 @@ export const Home = () => {
   }, [trending]);
   return (
     <>
-      <AppBar data={trending} />
+      <h1>Trending Movies</h1>
       {isLoading && <Loader />}
+
+      {trending && <AppBar trending={trending} />}
       <ToastContainer position="top-center" />
     </>
   );
