@@ -7,14 +7,9 @@ const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/';
 
 export const fetchTrending = async () => {
   const { data } = await axios.get(`trending/all/day?api_key=${API_KEY}`);
-  console.log(data);
+
   return data;
 };
-
-// export const normalizedImages = imagesArray =>
-//   imagesArray.map(({ id, tags, webformatURL, largeImageURL }) => {
-//     return { id, tags, webformatURL, largeImageURL };
-//   });
 
 export const fetchSearchMovies = async () => {
   const { data } = await axios.get(
@@ -28,6 +23,7 @@ export const fetchMovieDetails = async () => {
   const { data } = await axios.get(
     `movie/{id}?api_key=${API_KEY}&language=en-US`
   );
+  console.log(data);
   return data;
 };
 
@@ -42,6 +38,7 @@ export const fetchMovieReviews = async () => {
   const { data } = await axios.get(
     `movie/{movie_id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
   );
+  console.log(data);
   return data;
 };
 

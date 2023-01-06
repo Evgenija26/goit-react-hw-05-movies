@@ -3,6 +3,7 @@ import { GlobalStyle } from './GlobalStyle';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Home } from 'pages/Home';
+import { Movies } from 'pages/Movies';
 
 export const App = () => {
   return (
@@ -10,6 +11,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route hath="movies" element={<Movies />} />
         </Route>
         <Route path="*" element={<Home />} />
       </Routes>

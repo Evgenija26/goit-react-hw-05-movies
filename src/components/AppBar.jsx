@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom';
-import { Box } from './Box';
+import { NavLink } from 'react-router-dom';
 
-export const AppBar = data => {
+export const AppBar = () => {
   return (
-    <Box as="header" p={4} height="100vh" borderRight="1px solid black">
-      <Box as="nav" display="flex" flexDirection="colum">
-        {data.map(({ id, text }) => (
-          <Link to={`/movies/${id}`} key={id}>
-            {text}
-          </Link>
-        ))}
-      </Box>
-    </Box>
+    <>
+      <header>
+        <nav>
+          <span>
+            <NavLink to={'/'}>Home</NavLink>
+          </span>
+          <span>
+            <NavLink to={'/movies'}>Movies</NavLink>
+          </span>
+        </nav>
+      </header>
+    </>
   );
 };
