@@ -95,5 +95,14 @@ a&active {
   link:hover {
     color: #ff4500;
   }
+
+  text{
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  textReviews{
+    margin-top: 10px;
+  }
   
 `;
