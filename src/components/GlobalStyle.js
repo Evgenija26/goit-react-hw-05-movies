@@ -80,5 +80,20 @@ a&active {
   font-weight: 500;
   }
 
+  link{
+      display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  }
+
+  link:hover {
+    color: #ff4500;
+  }
   
 `;
