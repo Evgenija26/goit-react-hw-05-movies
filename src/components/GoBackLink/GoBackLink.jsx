@@ -1,9 +1,9 @@
-import { HiArrowLeftOnRectangle } from 'react-icons/hi';
+import { BsFillReplyAllFill } from 'react-icons/bs';
 
 export const GoBackLink = ({ to, children }) => {
   return (
     <link to={to}>
-      <HiArrowLeftOnRectangle size="24" />
+      <BsFillReplyAllFill size="24" />
       {children}
     </link>
   );

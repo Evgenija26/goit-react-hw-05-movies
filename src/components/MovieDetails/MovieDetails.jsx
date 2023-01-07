@@ -1,15 +1,18 @@
-import { useState, useEffect, useParams } from 'react';
+import { useState, useEffect, useParams, useLocation } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader';
 import { fetchMovieDetails } from 'api';
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import { GoBack } from 'components/GoBack/GoBack';
+import { GoBackLink } from 'components/GoBackLink/GoBackLink';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const location = useLocation();
+  const backLinkRef = location.state?.from ?? '/';
+
   useEffect(() => {
     async function getMovieDetails() {
       try {
@@ -27,7 +30,7 @@ export const MovieDetails = () => {
   return (
     <div>
       {loading && <Loader />}
-      <GoBack to={backRef}>Go Back</GoBack>
+      <GoBackLink to={backLinkRef}>Go Back</GoBackLink>
       <MovieCard movie={movie} />
     </div>
   );
