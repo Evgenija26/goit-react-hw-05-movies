@@ -62,16 +62,23 @@ App {
     display: flex;
   }
   
+a{
+ text-decoration: none;
+ 
+}
+a&active {
+    color: #ff4500;
+  }
+
   span {
     display: bloc;
-    text-decoration-line: none;
+    text-decoration: none;
     padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+   fill: black;
   font-weight: 500;
   }
+
   
-  span&active {
-    color: #ff4500;
-  }`;
+`;

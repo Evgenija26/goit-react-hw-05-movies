@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import css from './SearchBar.module.css';
 
-export const SearchBar = ({ onSubmit }) => {
+export const SearchBar = ({ name, onSubmit }) => {
   const [searchName, setSearchName] = useState('');
 
   const handleChange = e => setSearchName(e.currentTarget.value.toLowerCase());
@@ -16,19 +16,19 @@ export const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <header className={css.SearchBar}>
+    <div className={css.SearchBar}>
       <form className={css.SearchForm} onSubmit={handleSubmit}>
         <input
           className={css.SearchFormInput}
-          name="searchName"
+          name={name}
           type="text"
-          id="search"
+          //   id="search"
           onChange={handleChange}
         />
         <button className={css.SearchFormButton}>
           <BiSearchAlt />
         </button>
       </form>
-    </header>
+    </div>
   );
 };
