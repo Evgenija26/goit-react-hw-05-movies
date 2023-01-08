@@ -1,4 +1,5 @@
-import { useState, useEffect, useParams, useLocation } from 'react';
+import { useState, useEffect, useLocation } from 'react';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader';
