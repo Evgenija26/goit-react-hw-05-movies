@@ -3,8 +3,9 @@ import { fetchMovieReviews } from 'api';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import { toast } from 'react-toastify';
+import { Text, TextReview } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState('');
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -13,8 +14,8 @@ export const Reviews = () => {
     async function getMovieReviews() {
       try {
         setLoading(true);
-        const reviews = await fetchMovieReviews(id);
-        setReviews(reviews);
+        const results = await fetchMovieReviews(id);
+        setReviews(results);
       } catch {
         toast.error('something went wrong');
       } finally {
@@ -30,10 +31,12 @@ export const Reviews = () => {
 
       {reviews.map(({ author, id, content }) => (
         <div key={id}>
-          <text>Author: {author}</text>
-          <textReview>{content}</textReview>
+          <Text>Author: {author}</Text>
+          <TextReview>{content}</TextReview>
         </div>
       ))}
     </div>
   );
 };
+
+export default Reviews;

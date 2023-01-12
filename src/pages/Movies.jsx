@@ -6,7 +6,7 @@ import { MoviesList } from 'components/MoviesList';
 import { Loader } from 'components/Loader';
 import { useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,3 +44,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

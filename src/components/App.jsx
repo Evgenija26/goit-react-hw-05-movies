@@ -2,10 +2,15 @@ import { Toaster } from 'react-hot-toast';
 import { GlobalStyle } from './GlobalStyle';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
-import { Home } from 'pages/Home';
-import { Movies } from 'pages/Movies';
-import { MovieDetails } from './MovieDetails/MovieDetails';
-import { Reviews } from './Reviews/Reviews';
+import { lazy } from 'react';
+const Home = lazy(() => import('../pages/Home'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const Cast = lazy(() => import('./Cast/Cast'));
+
+// import { MovieDetails } from './MovieDetails/MovieDetails';
+// import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -15,9 +20,10 @@ export const App = () => {
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
           <Route path="movies/:id" element={<MovieDetails />}>
-            {/* <Route path="cast" element={<Cast />} />*/}
+            <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          {/* */}
         </Route>
         <Route path="*" element={<Home />} />
       </Routes>
