@@ -6,11 +6,8 @@ import { lazy } from 'react';
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
 const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
 const Cast = lazy(() => import('./Cast/Cast'));
-
-// import { MovieDetails } from './MovieDetails/MovieDetails';
-// import { Reviews } from './Reviews/Reviews';
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
@@ -23,7 +20,6 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          {/* */}
         </Route>
         <Route path="*" element={<Home />} />
       </Routes>

@@ -9,7 +9,7 @@ import { MovieCard } from 'components/MovieCard/MovieCard';
 import { GoBackLink } from 'components/GoBackLink/GoBackLink';
 
 const MovieDetails = () => {
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const location = useLocation();
@@ -32,7 +32,7 @@ const MovieDetails = () => {
     <div>
       {loading && <Loader />}
       <GoBackLink to={backLinkHref}>Go Back</GoBackLink>
-      {!loading && <MovieCard movie={movie} />}
+      {!loading && <MovieCard movie={movies} />}
       <Link to={'/reviews'} state={{ from: backLinkHref }}>
         Reviews
       </Link>

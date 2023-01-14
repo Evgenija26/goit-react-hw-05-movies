@@ -1,11 +1,12 @@
-import css from './MovieCard.module.css';
+import { Poster, CardWrapper } from './MovieCard.styled';
 
-export const MovieCard = ({ movie }) => {
-  const { original_title, vote_average, overview, genres } = movie;
+export const MovieCard = ({ movies }) => {
+  const { poster_path, original_title, vote_average, overview, genres } =
+    movies;
 
   const useCheck = Math.round(vote_average * 10);
 
-  function getPosterUrl(poster) {
+  function getPoster(poster) {
     if (!poster) {
       return 'https://upload.wikimedia.org/wikipedia/commons/6/64/Poster_not_available.jpg';
     } else {
@@ -15,10 +16,10 @@ export const MovieCard = ({ movie }) => {
 
   return (
     <>
-      <div className={css.poster}>
-        <img src={getPosterUrl} alt="poster" />
-      </div>
-      <div className={css.cardWrapper}>
+      <Poster>
+        <img src={getPoster(poster_path)} alt="poster" />
+      </Poster>
+      <CardWrapper>
         <h1>{original_title}</h1>
         <p>User Check: {useCheck}%</p>
         <h2>Overview</h2>
@@ -27,7 +28,7 @@ export const MovieCard = ({ movie }) => {
         {genres
           ? genres.map((genre, index) => <p key={index}>{genre.name}</p>)
           : 'Genres is not available'}
-      </div>
+      </CardWrapper>
     </>
   );
 };
