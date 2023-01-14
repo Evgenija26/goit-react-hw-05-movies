@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/89.e8fc8c2a.chunk.css","mappings":"AAAA,yBAEE,YAAa,CADb,WAEF,CAEA,8BAEE,gBAAiB,CADjB,WAEF","sources":["components/MovieCard/MovieCard.module.css"],"sourcesContent":[".poster {\n  width: 200px;\n  height: 270px;\n}\n\n.cardWrapper {\n  width: 600px;\n  margin-left: 10px;\n}\n"],"names":[],"sourceRoot":""}
