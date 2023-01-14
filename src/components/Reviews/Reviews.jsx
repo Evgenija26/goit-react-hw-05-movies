@@ -29,16 +29,17 @@ const Reviews = () => {
   return (
     <div>
       {loading && <Loader />}
-      {reviews.length === 0 ? (
-        <p>no reviews</p>
-      ) : (
-        reviews.map(({ author, id, content }) => (
-          <div key={id}>
-            <Text>Author: {author}</Text>
-            <TextReview>{content}</TextReview>
-          </div>
-        ))
-      )}
+      {reviews.length === 0
+        ? // <p>no reviews</p>
+          toast.info(
+            'While there are no reviews, eou have the opportunity to be the first'
+          )
+        : reviews.map(({ author, id, content }) => (
+            <div key={id}>
+              <Text>Author: {author}</Text>
+              <TextReview>{content}</TextReview>
+            </div>
+          ))}
     </div>
   );
 };

@@ -36,12 +36,14 @@ const MovieDetails = () => {
       {loading && <Loader />}
       <GoBackLink to={backLinkHref}>Go Back</GoBackLink>
       {!loading && <MovieCard movies={movies} />}
-      <Link to="reviews" state={{ from: backLinkHref }}>
-        Reviews
-      </Link>
-      <Link to="cast" state={{ from: backLinkHref }}>
-        Cast
-      </Link>
+      <ul>
+        <Link to="reviews" state={{ from: backLinkHref }}>
+          Reviews
+        </Link>
+        <Link to="cast" state={{ from: backLinkHref }}>
+          Cast
+        </Link>
+      </ul>
 
       <Outlet />
     </div>
