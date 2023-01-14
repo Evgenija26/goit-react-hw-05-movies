@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { Text, TextReview } from './Reviews.styled';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState('');
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
@@ -14,7 +14,8 @@ const Reviews = () => {
     async function getMovieReviews() {
       try {
         setLoading(true);
-        const results = await fetchMovieReviews(id);
+        const { results } = await fetchMovieReviews(id);
+
         setReviews(results);
       } catch {
         toast.error('something went wrong');
@@ -28,13 +29,16 @@ const Reviews = () => {
   return (
     <div>
       {loading && <Loader />}
-
-      {reviews.map(({ author, id, content }) => (
-        <div key={id}>
-          <Text>Author: {author}</Text>
-          <TextReview>{content}</TextReview>
-        </div>
-      ))}
+      {reviews.length === 0 ? (
+        <p>no reviews</p>
+      ) : (
+        reviews.map(({ author, id, content }) => (
+          <div key={id}>
+            <Text>Author: {author}</Text>
+            <TextReview>{content}</TextReview>
+          </div>
+        ))
+      )}
     </div>
   );
 };

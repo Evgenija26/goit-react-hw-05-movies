@@ -20,8 +20,11 @@ export const fetchSearchMovies = async value => {
   return data;
 };
 
-export const fetchMovieDetails = async id => {
-  const { data } = await axios.get(`movie/${id}?api_key=${API_KEY}`);
+export const fetchMovieDetails = async movie_id => {
+  const { data } = await axios.get(
+    `movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+  );
+
   return data;
 };
 
@@ -32,9 +35,9 @@ export const fetchMovieCredits = async id => {
 
 export const fetchMovieReviews = async id => {
   const { data } = await axios.get(
-    `movie/${id}/reviews?api_key=${API_KEY}S&page=1`
+    `movie/${id}/reviews?api_key=${API_KEY}&page=1`
   );
-  return data.results;
+  return data;
 };
 
 export const getPosterUrl = (path, size) => BASE_POSTER_URL + size + path;

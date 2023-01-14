@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader';
@@ -11,6 +11,7 @@ import { GoBackLink } from 'components/GoBackLink/GoBackLink';
 const MovieDetails = () => {
   const [movies, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -18,24 +19,30 @@ const MovieDetails = () => {
     async function getMovieDetails() {
       try {
         setLoading(true);
-        const data = await fetchMovieDetails();
-        setMovie(data.results);
+        const data = await fetchMovieDetails(id);
+
+        setMovie(data);
       } catch {
         toast.error('something went wrong');
       } finally {
+        setLoading(false);
       }
     }
     getMovieDetails();
-  }, []);
+  }, [id]);
 
   return (
     <div>
       {loading && <Loader />}
       <GoBackLink to={backLinkHref}>Go Back</GoBackLink>
-      {!loading && <MovieCard movie={movies} />}
-      <Link to={'/reviews'} state={{ from: backLinkHref }}>
+      {!loading && <MovieCard movies={movies} />}
+      <Link to="reviews" state={{ from: backLinkHref }}>
         Reviews
       </Link>
+      <Link to="cast" state={{ from: backLinkHref }}>
+        Cast
+      </Link>
+
       <Outlet />
     </div>
   );

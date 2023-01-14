@@ -1,4 +1,4 @@
-import { Poster, CardWrapper } from './MovieCard.styled';
+import { CardWrapper, Poster } from './MovieCard.styled';
 
 export const MovieCard = ({ movies }) => {
   const { poster_path, original_title, vote_average, overview, genres } =
