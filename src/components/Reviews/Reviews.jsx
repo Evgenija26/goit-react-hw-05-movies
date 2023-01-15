@@ -17,7 +17,7 @@ const Reviews = () => {
         const { results } = await fetchMovieReviews(id);
         if (results.length === 0)
           toast.info(
-            'While there are no reviews, eou have the opportunity to be the first'
+            'While there are no reviews, you have the opportunity to be the first'
           );
         setReviews(results);
       } catch {
