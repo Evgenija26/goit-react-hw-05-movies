@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader';
 import { fetchMovieDetails } from 'api';
 import { MovieCard } from 'components/MovieCard/MovieCard';

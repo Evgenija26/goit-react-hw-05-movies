@@ -12,11 +12,9 @@ const Home = () => {
     async function getTrending() {
       try {
         setIsLoading(true);
-        // const data = await API.getImages(searchName, currentPage);
-        const data = await fetchTrending();
-        // console.log(data);
 
-        // setTrending(prevTrending => [...prevTrending, ...data.results]);
+        const data = await fetchTrending();
+
         setTrending(data.results);
       } catch {
         toast.error('something went wrong');
@@ -31,7 +29,7 @@ const Home = () => {
       <h1>Trending Movies</h1>
       {isLoading && <Loader />}
 
-      {trending && <MoviesList movies={trending} />}
+      {trending.length > 0 && <MoviesList movies={trending} />}
     </>
   );
 };

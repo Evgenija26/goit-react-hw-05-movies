@@ -3,6 +3,7 @@ import { Box } from './Box';
 import { AppBar } from './AppBar';
 import { ToastContainer } from 'react-toastify';
 import { Suspense } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Layout = () => {
   return (

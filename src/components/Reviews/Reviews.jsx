@@ -15,7 +15,10 @@ const Reviews = () => {
       try {
         setLoading(true);
         const { results } = await fetchMovieReviews(id);
-
+        if (results.length === 0)
+          toast.info(
+            'While there are no reviews, eou have the opportunity to be the first'
+          );
         setReviews(results);
       } catch {
         toast.error('something went wrong');
@@ -29,17 +32,13 @@ const Reviews = () => {
   return (
     <div>
       {loading && <Loader />}
-      {reviews.length === 0
-        ? // <p>no reviews</p>
-          toast.info(
-            'While there are no reviews, eou have the opportunity to be the first'
-          )
-        : reviews.map(({ author, id, content }) => (
-            <div key={id}>
-              <Text>Author: {author}</Text>
-              <TextReview>{content}</TextReview>
-            </div>
-          ))}
+      {reviews.length > 0 &&
+        reviews.map(({ author, id, content }) => (
+          <div key={id}>
+            <Text>Author: {author}</Text>
+            <TextReview>{content}</TextReview>
+          </div>
+        ))}
     </div>
   );
 };

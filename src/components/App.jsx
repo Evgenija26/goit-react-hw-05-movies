@@ -1,5 +1,3 @@
-import { Toaster } from 'react-hot-toast';
-import { GlobalStyle } from './GlobalStyle';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { lazy } from 'react';
@@ -23,8 +21,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<Home />} />
       </Routes>
-      <GlobalStyle />
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

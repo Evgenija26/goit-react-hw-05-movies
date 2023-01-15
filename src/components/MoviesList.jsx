@@ -1,12 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Box } from 'components/Box';
-function getPoster(poster) {
-  if (!poster) {
-    return 'https://upload.wikimedia.org/wikipedia/commons/6/64/Poster_not_available.jpg';
-  } else {
-    return `https://image.tmdb.org/t/p/w300/${poster}`;
-  }
-}
+import { getPoster } from 'api';
 
 export const MoviesList = ({ movies, text }) => {
   const location = useLocation();

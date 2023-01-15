@@ -3,7 +3,8 @@ import { fetchMovieCredits } from 'api';
 import { useParams } from 'react-router-dom';
 import { PhotoWrapper, Container } from './Cast.styled';
 import { Loader } from 'components/Loader';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
+import { getPoster } from 'api';
 
 const Cast = () => {
   const [castInfo, setCastInfo] = useState([]);
@@ -26,14 +27,6 @@ const Cast = () => {
 
     getCastInfo();
   }, [id]);
-
-  function getPoster(poster) {
-    if (poster === null) {
-      return 'https://upload.wikimedia.org/wikipedia/commons/6/64/Poster_not_available.jpg';
-    } else {
-      return `https://image.tmdb.org/t/p/w300/${poster}`;
-    }
-  }
 
   return (
     <>

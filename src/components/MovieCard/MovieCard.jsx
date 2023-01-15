@@ -1,18 +1,11 @@
 import { CardWrapper, Poster } from './MovieCard.styled';
+import { getPoster } from 'api';
 
 export const MovieCard = ({ movies }) => {
   const { poster_path, original_title, vote_average, overview, genres } =
     movies;
 
   const useCheck = Math.round(vote_average * 10);
-
-  function getPoster(poster) {
-    if (!poster) {
-      return 'https://upload.wikimedia.org/wikipedia/commons/6/64/Poster_not_available.jpg';
-    } else {
-      return `https://image.tmdb.org/t/p/w300/${poster}`;
-    }
-  }
 
   return (
     <>
